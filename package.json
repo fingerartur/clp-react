@@ -2,7 +2,7 @@
   "name": "clp-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/fingerartur/clp-react",
+  "homepage": "https://fingerartur.github.io/clp-react/",
   "dependencies": {
     "@castlabs/prestoplay": "6.2",
     "@castlabs/prestoplay-react-components": "^0.5.0",
