@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/clp-react/static/css/main.fbfa8054.css",
+    "main.js": "/clp-react/static/js/main.566125a8.js",
+    "index.html": "/clp-react/index.html",
+    "main.fbfa8054.css.map": "/clp-react/static/css/main.fbfa8054.css.map",
+    "main.566125a8.js.map": "/clp-react/static/js/main.566125a8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fbfa8054.css",
+    "static/js/main.566125a8.js"
+  ]
+}
