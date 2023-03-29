@@ -20,6 +20,10 @@ import {
   BaseThemeOverlay,
 } from '@castlabs/prestoplay-react-components'
 
+const baseConfig = {
+  license: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmxzIjpbIjovL2ZpbmdlcmFydHVyLmdpdGh1Yi5pbyJdLCJ0eXBlIjoiV2ViIiwia2lkIjozNDc5LCJpbHYiOmZhbHNlfQ.qIbY824dz3iR0C17YsUaQzoaXwO-tXuCB7BZgcXksH5i99yyQCTw26q-xEtwvS9WCdaeX-nsrikgW69IEekoDObRFyZpAApt_EkKbZxkfygC5smElLrk7D_tXaF9rxEsGhFjHg6NMF9ZxUdJ_h1RcsVnCOsuhXd4kI-hy2KzDuzyfcoGUEfva_eGZP13cQP4Gy585uX3MJ9i25tuBVO3XU8oAsCzHPBhoChR_UP9g_3iFOrtpRAFzvJU1v1AXmM_JntyZgsbk-HtQdPKPF4ZpW6GMz1wJMQonFSo4tb52R4fFDRJzfBfCKRRJ9Fw2fMchT5qXmgNh8WJF50ipmbnbw',
+}
+
 export const App = () => {
   // Create the player as state of this component
   const [player] = useState(new Player((pp:any) => {
@@ -43,9 +47,9 @@ export const App = () => {
 
   const play = () => {
     const cfg = {
-      license: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmxzIjpbIjovL2ZpbmdlcmFydHVyLmdpdGh1Yi5pbyJdLCJ0eXBlIjoiV2ViIiwia2lkIjozNDc5LCJpbHYiOmZhbHNlfQ.qIbY824dz3iR0C17YsUaQzoaXwO-tXuCB7BZgcXksH5i99yyQCTw26q-xEtwvS9WCdaeX-nsrikgW69IEekoDObRFyZpAApt_EkKbZxkfygC5smElLrk7D_tXaF9rxEsGhFjHg6NMF9ZxUdJ_h1RcsVnCOsuhXd4kI-hy2KzDuzyfcoGUEfva_eGZP13cQP4Gy585uX3MJ9i25tuBVO3XU8oAsCzHPBhoChR_UP9g_3iFOrtpRAFzvJU1v1AXmM_JntyZgsbk-HtQdPKPF4ZpW6GMz1wJMQonFSo4tb52R4fFDRJzfBfCKRRJ9Fw2fMchT5qXmgNh8WJF50ipmbnbw',
       // Taken from https://demo.castlabs.com/#/player/demo?cfg=eyJzb3VyY2UiOnsidXJsIjoiaHR0cHM6Ly9kZW1vLmNmLmNhc3RsYWJzLmNvbS9tZWRpYS9UT1MvYWJyL01hbmlmZXN0X2NsZWFuX3NpemVzLm1wZCIsInR5cGUiOiJhcHBsaWNhdGlvbi9kYXNoK3htbCJ9LCJhdXRvcGxheSI6dHJ1ZSwibWFuaWZlc3QiOnt9LCJhYnIiOnsicmVzdHJpY3Rpb25zIjp7fX0sImRybSI6e30sInJlc3RyaWN0aW9ucyI6e30sIm1ldGFkYXRhIjp7InRpdGxlIjoiUUEgLSBUT1MgQ2xlYXIiLCJieWxpbmUiOiIiLCJkZXNjcmlwdGlvbiI6IkNsZWFyIFRPUyIsInBvc3RlclVybCI6IiIsInRodW1iVXJsIjoiIiwidmlkZW9Db2RlY3MiOlsiaDI2NCJdLCJhdWRpb0NvZGVjcyI6WyJBQUMiLCJEVFMiLCJEb2xieSIsIkhFLUFBQyJdLCJob3N0ZXIiOiJDYXN0TGFicyIsImN1c3RvbUhvc3RlciI6IiIsInN1YnRpdGxlcyI6dHJ1ZSwibXVsdGlBdWRpbyI6dHJ1ZSwicWEiOnRydWUsImJyb3dzZXJzIjpbXSwidGVzdENhc2VzIjpbImlvc19zdWJ0aXRsZV8wMSIsImlvc19pbWFfYWRzIiwiaW9zX3N1YnRpdGxlVFRNTEZpbGVDb25maWciLCJpb3Nfc3VidGl0bGVTeXN0ZW1TZXR0aW5ncyIsImFuZHJvaWRfZG93bmxvYWRlciIsImlvc19zdGF0ZV90cmFuc3Rpb24iXSwiYXVkaW8iOiJza2lwIiwiYXVkaW9fMiI6InNraXAiLCJ2aWRlbyI6InNraXAiLCJzdWJ0aXRsZSI6InNraXAiLCJzdWJ0aXRsZV8yIjoic2tpcCIsInNlZWtfYmVnaW5pbmciOiJza2lwIiwic2Vla19wb3N0aW9uX2Fzc2VydCI6InNraXAifSwidGV4dHN0eWxlIjp7ImZvbnRGYW1pbHkiOiInUm9ib3RvJywgc2Fucy1zZXJpZiIsImZvbnRDb2xvciI6IndoaXRlIiwiYmFja2dyb3VuZENvbG9yIjoicmdiYSgwLCAwLCAwLCAwLjc1KSJ9LCJwbHVnaW5zIjp7fSwiaWQiOjN9&assetId=3
       source: 'https://demo.cf.castlabs.com/media/TOS/abr/Manifest_clean_sizes.mpd',
+      autoplay: true,
     }
 
     console.info('Playing with config: ', cfg)
@@ -54,7 +58,12 @@ export const App = () => {
 
   return (
     <>
-      <PlayerSurface player={player} config={config}>
+      <PlayerSurface
+        player={player}
+        config={config}
+        baseConfig={baseConfig}
+        autoload
+      >
         <BaseThemeOverlay
           player={player}
           seekForward={10}
