@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://fingerartur.github.io/clp-react/",
   "dependencies": {
+    "@broadpeak/smartlib-v3-nopolyfill": "^4.3.1-2683a90",
     "@castlabs/prestoplay": "6.2",
     "@castlabs/prestoplay-react-components": "^0.6.0",
     "@testing-library/jest-dom": "^5.16.5",
