@@ -5,10 +5,7 @@ import "@castlabs/prestoplay/cl.mse.min"
 import "@castlabs/prestoplay/cl.dash.min"
 import React, { useEffect } from "react"
 import ReactDOM from "react-dom"
-// @ts-ignore
-import * as youbora from 'youboralib'
-// @ts-ignore
-window.youbora = youbora
+
 // @ts-ignore
 window.clpp = clpp
 
@@ -24,6 +21,7 @@ export const App = () => {
 
     player.use(clpp.dash.DashComponent)
 
+    // @ts-ignore
     const sessionsPlugin = new youbora.Plugin({
       accountCode: '<YOUR ACCOUNT CODE>'
       // ... other NPAW options
