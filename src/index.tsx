@@ -11,40 +11,70 @@ import "@castlabs/prestoplay/cl.dash"
 import "@castlabs/prestoplay/cl.htmlcue"
 import "@castlabs/prestoplay/cl.ttml"
 
-const config = {
-  license: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmxzIjpbIjovL2ZpbmdlcmFydHVyLmdpdGh1Yi5pbyJdLCJ0eXBlIjoiV2ViIiwia2lkIjozNDc5LCJpbHYiOmZhbHNlfQ.qIbY824dz3iR0C17YsUaQzoaXwO-tXuCB7BZgcXksH5i99yyQCTw26q-xEtwvS9WCdaeX-nsrikgW69IEekoDObRFyZpAApt_EkKbZxkfygC5smElLrk7D_tXaF9rxEsGhFjHg6NMF9ZxUdJ_h1RcsVnCOsuhXd4kI-hy2KzDuzyfcoGUEfva_eGZP13cQP4Gy585uX3MJ9i25tuBVO3XU8oAsCzHPBhoChR_UP9g_3iFOrtpRAFzvJU1v1AXmM_JntyZgsbk-HtQdPKPF4ZpW6GMz1wJMQonFSo4tb52R4fFDRJzfBfCKRRJ9Fw2fMchT5qXmgNh8WJF50ipmbnbw',
-}
 
-export const App = () => {
+const Player = (props: { color?: boolean }) => {
   const playerRef = useRef<any|null>(null)
 
   const createPlayer = (video: any) => {
-    playerRef.current = new clpp.Player(video, config)
+    // Instantiate PRESTOplay player
+    playerRef.current = new clpp.Player(video, {})
     playerRef.current.use(clpp.dash.DashComponent)
     playerRef.current.use(clpp.htmlcue.HtmlCueComponent)
     playerRef.current.use(clpp.ttml.TtmlComponent)
   }
 
-  const play = async () => {
-    const cfg = {
-      // DE-6429
-      source: 'https://castlabs-dl.s3.eu-west-1.amazonaws.com/public/SUPPORT/DE-2161/IFE-HHD10.mpd',
-      autoplay: true,
-    }
-
-    console.info('Playing with config: ', cfg)
-
-    await playerRef.current.load(cfg)
-
-    const trackManager = playerRef.current.getTrackManager()
-    const textTracks = await trackManager.getTextTracks()
-    console.log('AAA textTracks: ', textTracks)
-
-    const germanTrack = textTracks.find((track: any) => track.language === 'de')
-    trackManager.setTextTrack(germanTrack)
-    console.log('AAA setting german track: ', germanTrack)
+  const pause = () => {
+    playerRef.current.pause()
   }
 
+  const play = async () => {
+    const config = {
+      source: 'https://castlabs-dl.s3.eu-west-1.amazonaws.com/public/SUPPORT/DE-2161/IFE-HHD10.mpd',
+      autoplay: true,
+      ...props.color ? {
+        "textStyle": {
+          "fontFamily": "'Roboto', sans-serif",
+          "fontColor": "Red",
+          "backgroundColor": "rgba(0, 0, 0, 0.75)"
+        },
+      } : {},
+    }
+
+    // Play the video
+    console.info('Playing with config: ', config)
+    await playerRef.current.load(config)
+
+    // Change subtitles to german, which contains italics
+    const trackManager = playerRef.current.getTrackManager()
+    const textTracks = await trackManager.getTextTracks()
+    console.log('All subtitle tracks:', textTracks)
+    const germanTrack = textTracks.find((track: any) => track.language === 'de')
+    console.log('Set subtitles to German:', germanTrack)
+    trackManager.setTextTrack(germanTrack)
+  }
+
+  /**
+   * PRESTOplay will wrap the video element with a div container
+   * and append subtitle viewport to it.
+   * 
+     <div class="clpp-container clpp-video-0 clpp-video-1">
+       <video/>
+       <div class="clpp-text-container clpp-text-ttml">...</div>
+     </div>
+   *
+   * Make sure none of the clpp-* classes are removed or overridden by CSS.
+   * 
+   * In case of React/Vue/Angular make sure that re-rendering does not
+   * accidentally remove these classes.
+   * 
+   * 
+   * In this example, the styles applied to the subtitles can be 
+   * debugged by running the following in the browser console:
+   * 
+   * ```
+   * document.getElementsByTagName('style')[2].sheet.rules
+   * ```
+   */
   return (
     <>
       <video
@@ -59,9 +89,19 @@ export const App = () => {
       <div className={"options"}>
         <label>
           <button onClick={play}>Play</button>
+          <button onClick={pause}>Pause</button>
         </label>
       </div>
     </>
+  )
+}
+
+const App = () => {
+  return (
+    <div>
+      <Player color/>
+      <Player/>
+    </div>
   )
 }
 

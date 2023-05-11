@@ -7,10 +7,3 @@ Install and run:
 yarn install
 yarn start
 ```
-
-## Deploy
-Deploy to GitHub pages:
-
-```sh
-yarn deploy
-```
