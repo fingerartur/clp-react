@@ -1080,15 +1080,10 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@castlabs/prestoplay-react-components@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@castlabs/prestoplay-react-components/-/prestoplay-react-components-0.6.0.tgz#33e4c8a07cadae918b44edf80385c0f918542398"
-  integrity sha512-pDblYAqjNp5zT/S5dpQhYFJso0J64M4ILvtj/0vDFiOBQR1PULFccIvQiORhgg0QJUMTzf+//2f6bQe4W/WfXg==
-
-"@castlabs/prestoplay@6.2":
-  version "6.2.7"
-  resolved "https://registry.yarnpkg.com/@castlabs/prestoplay/-/prestoplay-6.2.7.tgz#96e5622a215e1da0e3c8d0aaa878222212afe6fb"
-  integrity sha512-nDpl4oA7YLf+BrRttjR9GL+4k8SivxeKWtYqV473lRXlzCV8vwywrbALnyjL7qhBamwEPb+9zAU+jYuYHviAOw==
+"@castlabs/prestoplay@^6.2.8":
+  version "6.2.8"
+  resolved "https://registry.yarnpkg.com/@castlabs/prestoplay/-/prestoplay-6.2.8.tgz#c5ba079f55d3ba3533cac7b1cd8c40f5cba8b6fa"
+  integrity sha512-cWplPLTH78cNP+cGOcs/a+XF7Uoh2nKddoymvN4p2jtfyjWtirGHaawtB8aeKTv11qpS1k8Rb9rCMCS5wBoa4w==
 
 "@csstools/normalize.css@*":
   version "12.0.0"
