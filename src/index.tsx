@@ -5,8 +5,8 @@ import './index.css'
 import "@castlabs/prestoplay/clpp.styles.css"
 // @ts-ignore
 import * as muxjs from "mux.js"
-
-// import "@castlabs/prestoplay/ima3-clpp"
+// @ts-ignore
+import * as ima from "@castlabs/prestoplay/ima3-clpp"
 
 // @ts-ignore
 import {clpp} from "@castlabs/prestoplay"
@@ -14,8 +14,10 @@ import "@castlabs/prestoplay/cl.mse"
 import "@castlabs/prestoplay/cl.dash"
 import "@castlabs/prestoplay/cl.hls"
 import "@castlabs/prestoplay/cl.vtt"
+import "@castlabs/prestoplay/cl.ima"
 
-
+// @ts-ignore
+window.ima = ima
 // @ts-ignore
 window.muxjs = muxjs
 
@@ -43,6 +45,12 @@ const Player = () => {
         // url: 'https://demo.cf.castlabs.com/public/HLS/gerard-test/ioss291-clear720/master.m3u8',
         type: clpp.Type.HLS,
       },
+      ima: {
+        adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&' +
+          'iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&' +
+          'gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&' +
+          'cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=' + Date.now(),
+      }
     }
 
     if (canvasRef.current) {
@@ -59,16 +67,18 @@ const Player = () => {
 
   return (
     <>
-      <video
-        ref={createPlayer}
-        autoPlay
-        style={{
-          width: 600,
-          height: 400,
-          border: '10px solid yellow'
-        }}
-      />
-      <canvas id="vu-canvas" width="100" height="200" ref={canvasRef} />
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <video
+          ref={createPlayer}
+          autoPlay
+          style={{
+            width: 600,
+            height: 400,
+            border: '10px solid yellow'
+          }}
+        />
+        <canvas id="vu-canvas" width="100" height="200" ref={canvasRef} />
+      </div>
       <div className={"options"}>
         <label>
           <button onClick={play}>Play</button>
