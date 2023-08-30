@@ -3,24 +3,33 @@ import ReactDOM from 'react-dom'
 
 import './index.css'
 import "@castlabs/prestoplay/clpp.styles.css"
+// @ts-ignore
+import * as muxjs from "mux.js"
+
+// import "@castlabs/prestoplay/ima3-clpp"
 
 // @ts-ignore
 import {clpp} from "@castlabs/prestoplay"
 import "@castlabs/prestoplay/cl.mse"
 import "@castlabs/prestoplay/cl.dash"
-import "@castlabs/prestoplay/cl.htmlcue"
-import "@castlabs/prestoplay/cl.ttml"
+import "@castlabs/prestoplay/cl.hls"
+import "@castlabs/prestoplay/cl.vtt"
 
 
-const Player = (props: { color?: boolean }) => {
+// @ts-ignore
+window.muxjs = muxjs
+
+
+const Player = () => {
   const playerRef = useRef<any|null>(null)
+  const canvasRef = useRef<any|null>(null)
 
   const createPlayer = (video: any) => {
     // Instantiate PRESTOplay player
     playerRef.current = new clpp.Player(video, {})
     playerRef.current.use(clpp.dash.DashComponent)
-    playerRef.current.use(clpp.htmlcue.HtmlCueComponent)
-    playerRef.current.use(clpp.ttml.TtmlComponent)
+    playerRef.current.use(clpp.hls.HlsComponent)
+    playerRef.current.use(clpp.vtt.VttComponent)
   }
 
   const pause = () => {
@@ -29,52 +38,25 @@ const Player = (props: { color?: boolean }) => {
 
   const play = async () => {
     const config = {
-      source: 'https://castlabs-dl.s3.eu-west-1.amazonaws.com/public/SUPPORT/DE-2161/IFE-HHD10.mpd',
-      autoplay: true,
-      ...props.color ? {
-        "textStyle": {
-          "fontFamily": "'Roboto', sans-serif",
-          "fontColor": "Red",
-          "backgroundColor": "rgba(0, 0, 0, 0.75)"
-        },
-      } : {},
+      source: {
+        url: 'https://samples-2ndlook.penthera.com/secondlook/646e51800363430972b48b36?assetId=media-tailor-001&lookahead=12000&manifest=https://d3fch9e2fcarly.cloudfront.net/cunsco-media/Media/VOD-with-slates/roseparade_5min.m3u8',
+        // url: 'https://demo.cf.castlabs.com/public/HLS/gerard-test/ioss291-clear720/master.m3u8',
+        type: clpp.Type.HLS,
+      },
+    }
+
+    if (canvasRef.current) {
+      playerRef.current.vuMeter.configure({
+        canvas: canvasRef.current,
+      })
+      playerRef.current.vuMeter.mount()
     }
 
     // Play the video
     console.info('Playing with config: ', config)
     await playerRef.current.load(config)
-
-    // Change subtitles to german, which contains italics
-    const trackManager = playerRef.current.getTrackManager()
-    const textTracks = await trackManager.getTextTracks()
-    console.log('All subtitle tracks:', textTracks)
-    const germanTrack = textTracks.find((track: any) => track.language === 'de')
-    console.log('Set subtitles to German:', germanTrack)
-    trackManager.setTextTrack(germanTrack)
   }
 
-  /**
-   * PRESTOplay will wrap the video element with a div container
-   * and append subtitle viewport to it.
-   * 
-     <div class="clpp-container clpp-video-0 clpp-video-1">
-       <video/>
-       <div class="clpp-text-container clpp-text-ttml">...</div>
-     </div>
-   *
-   * Make sure none of the clpp-* classes are removed or overridden by CSS.
-   * 
-   * In case of React/Vue/Angular make sure that re-rendering does not
-   * accidentally remove these classes.
-   * 
-   * 
-   * In this example, the styles applied to the subtitles can be 
-   * debugged by running the following in the browser console:
-   * 
-   * ```
-   * document.getElementsByTagName('style')[2].sheet.rules
-   * ```
-   */
   return (
     <>
       <video
@@ -86,6 +68,7 @@ const Player = (props: { color?: boolean }) => {
           border: '10px solid yellow'
         }}
       />
+      <canvas id="vu-canvas" width="100" height="200" ref={canvasRef} />
       <div className={"options"}>
         <label>
           <button onClick={play}>Play</button>
@@ -99,7 +82,7 @@ const Player = (props: { color?: boolean }) => {
 const App = () => {
   return (
     <div>
-      <Player color/>
+      <Player/>
       <Player/>
     </div>
   )
