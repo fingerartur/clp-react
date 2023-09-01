@@ -1,0 +1,13 @@
+name: Process Release
+run-name: Process Release
+
+on:
+  release:
+    types: [ released ]
+
+jobs:
+  info:
+    steps:
+      - name: Print Info
+        run: |
+          echo 'Workflow triggered!'
