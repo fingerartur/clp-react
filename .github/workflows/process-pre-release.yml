@@ -1,0 +1,14 @@
+name: Process Pre-Release
+run-name: Process Pre-Release
+
+on:
+  release:
+    types: [ prereleased ]
+
+jobs:
+  info:
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - name: Print Info
+        run: |
+          echo 'Pre-release triggered me!'

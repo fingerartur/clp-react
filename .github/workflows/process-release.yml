@@ -3,12 +3,12 @@ run-name: Process Release
 
 on:
   release:
-    # types: [ released ]
-    types: [ published ]
+    types: [ released ]
 
 jobs:
   info:
+    runs-on: [ ubuntu-latest ]
     steps:
       - name: Print Info
         run: |
-          echo 'Workflow triggered!'
+          echo 'Release triggered me!'
