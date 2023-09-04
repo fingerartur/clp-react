@@ -5,6 +5,8 @@ on:
   release:
     types: [ prereleased ]
 
+env:
+  TAG: ${{ github.event.release.tag_name }}
 
 jobs:
   info:
@@ -12,6 +14,9 @@ jobs:
     steps:
       - name: Print Info
         run: |
-          echo 'Pre-release triggered me!'
-          [[ "${{ github.event.release.tag_name }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+-beta.[0-9]+$ ]] || echo "Invalid tag"; exit 1;
-          echo "All is good :)"
+          if [[ ! "$TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+-beta.[0-9]+$ ]]; then
+            echo "Invalid tag $TAG"
+            exit 1
+          fi
+
+          echo "Valid tag."
