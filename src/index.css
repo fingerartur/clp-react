@@ -91,3 +91,8 @@ a:hover {
 .ex-text {
   text-align: center;
 }
+
+#me-ad-container {
+  position: relative;
+  top: 400px;
+}
