@@ -129,6 +129,15 @@ function initCSAI(video, adContainer, adTag, adCues, clppPlayer) {
         clppPlayer.vuMeter.attachToImaAdsVideo(adContainer);
       });
 
+      // Datazoom code
+      //
+      // adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, () => {
+      //   player_csai.vuMeter.attachToImaAdsVideo(adContainer);
+      // });
+      // adsManager.addEventListener(google.ima.AdEvent.Type.AD_PROGRESS, () => {
+      //   player_csai.vuMeter.attachToImaAdsVideo(adContainer);
+      // });
+
       try {
           // @ts-ignore
           adsManager.init(video.clientWidth, video.clientHeight, google.ima.ViewMode.NORMAL);
