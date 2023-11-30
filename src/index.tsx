@@ -21,7 +21,7 @@ import {
 } from '@castlabs/prestoplay-react-components'
 
 const baseConfig = {
-  license: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmxzIjpbIjovL2ZpbmdlcmFydHVyLmdpdGh1Yi5pbyJdLCJ0eXBlIjoiV2ViIiwia2lkIjozNDc5LCJpbHYiOmZhbHNlfQ.qIbY824dz3iR0C17YsUaQzoaXwO-tXuCB7BZgcXksH5i99yyQCTw26q-xEtwvS9WCdaeX-nsrikgW69IEekoDObRFyZpAApt_EkKbZxkfygC5smElLrk7D_tXaF9rxEsGhFjHg6NMF9ZxUdJ_h1RcsVnCOsuhXd4kI-hy2KzDuzyfcoGUEfva_eGZP13cQP4Gy585uX3MJ9i25tuBVO3XU8oAsCzHPBhoChR_UP9g_3iFOrtpRAFzvJU1v1AXmM_JntyZgsbk-HtQdPKPF4ZpW6GMz1wJMQonFSo4tb52R4fFDRJzfBfCKRRJ9Fw2fMchT5qXmgNh8WJF50ipmbnbw',
+  // license: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmxzIjpbIjovL2ZpbmdlcmFydHVyLmdpdGh1Yi5pbyJdLCJ0eXBlIjoiV2ViIiwia2lkIjozNDc5LCJpbHYiOmZhbHNlfQ.qIbY824dz3iR0C17YsUaQzoaXwO-tXuCB7BZgcXksH5i99yyQCTw26q-xEtwvS9WCdaeX-nsrikgW69IEekoDObRFyZpAApt_EkKbZxkfygC5smElLrk7D_tXaF9rxEsGhFjHg6NMF9ZxUdJ_h1RcsVnCOsuhXd4kI-hy2KzDuzyfcoGUEfva_eGZP13cQP4Gy585uX3MJ9i25tuBVO3XU8oAsCzHPBhoChR_UP9g_3iFOrtpRAFzvJU1v1AXmM_JntyZgsbk-HtQdPKPF4ZpW6GMz1wJMQonFSo4tb52R4fFDRJzfBfCKRRJ9Fw2fMchT5qXmgNh8WJF50ipmbnbw',
 }
 
 export const App = () => {
@@ -65,7 +65,6 @@ export const App = () => {
         autoload
       >
         <BaseThemeOverlay
-          player={player}
           seekForward={10}
           seekBackward={-10}
           menuSelectionOptions={[

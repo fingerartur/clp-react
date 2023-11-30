@@ -4,8 +4,8 @@
   "private": true,
   "homepage": "https://fingerartur.github.io/clp-react/",
   "dependencies": {
-    "@castlabs/prestoplay": "6.2",
-    "@castlabs/prestoplay-react-components": "^0.6.0",
+    "@castlabs/prestoplay": "^6.7.0",
+    "@castlabs/prestoplay-react-components": "^0.7.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
