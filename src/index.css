@@ -67,9 +67,8 @@ a:hover {
   justify-content: center;
 }
 
-/** PRESTOPLay style overrides */
-.App-video-container .pp-ui-surface {
-  height: 680px;
+.ex-container {
+  height: 500px;
 }
 
 .ex-centered {

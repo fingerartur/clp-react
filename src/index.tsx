@@ -58,22 +58,24 @@ export const App = () => {
 
   return (
     <>
-      <PlayerSurface
-        player={player}
-        config={config}
-        baseConfig={baseConfig}
-        autoload
-      >
-        <BaseThemeOverlay
-          seekForward={10}
-          seekBackward={-10}
-          menuSelectionOptions={[
-            {type: "audio", label: "Language", hideCurrentlyActive:false, hideWhenUnavailable: true},
-            {type: "text", label: "Subtitles", hideCurrentlyActive:false, hideWhenUnavailable: true},
-            {type: "video", label: "Video", hideCurrentlyActive:false, hideWhenUnavailable: true}
-          ]}
-        />
-      </PlayerSurface>
+      <div className="ex-container">
+        <PlayerSurface
+          player={player}
+          config={config}
+          baseConfig={baseConfig}
+          autoload
+        >
+          <BaseThemeOverlay
+            seekForward={10}
+            seekBackward={-10}
+            menuSelectionOptions={[
+              {type: "audio", label: "Language", hideCurrentlyActive:false, hideWhenUnavailable: true},
+              {type: "text", label: "Subtitles", hideCurrentlyActive:false, hideWhenUnavailable: true},
+              {type: "video", label: "Video", hideCurrentlyActive:false, hideWhenUnavailable: true}
+            ]}
+          />
+        </PlayerSurface>
+      </div>
 
       <div className={"options"}>
         <label>
